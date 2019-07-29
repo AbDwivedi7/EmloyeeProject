@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  
+  <servlet>
+  	<servlet-name>AddForm</servlet-name>
+  	<servlet-class>com.employee.EmployeeForm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddForm</servlet-name>
+  	<url-pattern>/employeeForm</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AddEmployee</servlet-name>
+  	<servlet-class>com.employee.AddEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddEmployee</servlet-name>
+  	<url-pattern>/addEmployee</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ViewEmployee</servlet-name>
+  	<servlet-class>com.employee.ViewEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ViewEmployee</servlet-name>
+  	<url-pattern>/viewEmployee</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>UpdateEmployee</servlet-name>
+  	<servlet-class>com.employee.UpdateEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UpdateEmployee</servlet-name>
+  	<url-pattern>/updateEmployee</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
