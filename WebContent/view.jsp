@@ -89,12 +89,12 @@ margin-left: 40%;
    		<td><%=s.getSalary() %></td>
    		<td><%=s.getDesignation() %></td>
    		<td><%=s.getHiredate() %></td>
-	   	<td>	<form action="updateEmployee.jsp">
+	   	<td>	<form action="employeeForm" method="post">
 	   			<input type="hidden" name="userId" value=<%=s.getId()%>> 
 	   			<input type="hidden" name="name" value=<%=s.getName()%>> 
-	   			<input type="hidden" name="department" value=<%=s.getDepartment()%>> 
+	   			<input type="hidden" name="dep" value=<%=s.getDepartment()%>> 
 	   			<input type="hidden" name="salary" value=<%=s.getSalary()%>> 
-	   			<input type="hidden" name="desig" value=<%=s.getDesignation()%>> 
+	   			<input type="hidden" name="designation" value=<%=s.getDesignation()%>> 
 	   			<input type="hidden" name="hiredate" value=<%=s.getHiredate()%>> 
 	 			<input type="submit" value="Edit">
 	 		</form>

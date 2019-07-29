@@ -1,3 +1,7 @@
+<%@ page import="com.employee.Department"%> 
+<%@ page import="com.employee.Designation"%> 
+<%@ page import="com.employee.Employee"%> 
+<%@ page import="java.util.ArrayList"%> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -68,21 +72,55 @@ float:right;
 </div>
 
 <div id="inputt">
+<% ArrayList<Designation> designationList =  (ArrayList<Designation>)request.getAttribute("data2"); %>
+ <% ArrayList<Department> departmentList =  (ArrayList<Department>)request.getAttribute("data1"); %>
+ <% ArrayList<Employee> employeeList = (ArrayList<Employee>)request.getAttribute("data3"); %>
+ 
+<%for(Employee e : employeeList) { %> 
+<% System.out.println(e.getId()); %>>
+	<%if(e.getId() == null) {%>
+			   
 			   <input type="text" name="name"/><br/>
 			   <input type="text" name="salary"/><br/>
 			   <input type="date" name="jdate"/><br/>
-			    <select name="designation">
-			     
-				<option> Manager </option>
-				<option> Engineer </option>
-				<option> Executive </option>	
-			  </select><br/>
+			   
+			   <select name="designation">
+			  		<% for(Designation d1: designationList) {%>   
+							<option><%=d1.getDesig_name()%></option>
+					<% } %>
+			   </select><br/>
 			   <select name="dep">
-				<option> Software </option>
-				<option> Hardware </option>
-				<option> Support </option>	
-				</select><br/>
+			   		<% for(Department d: departmentList) {%>
+							<option><%=d.getDept_name()%></option>	
 					
+					<%} %>
+			  	</select><br/>
+	
+	<% }else{ %>
+		 	   <input type="text" name="name" value=<%=e.getName() %>/><br/>
+			   <input type="text" name="salary" value=<%=e.getSalary() %>/><br/>
+			   <input type="date" name="jdate" value=<%=e.getHiredate() %>/><br/>
+			   
+			   <select name="designation">
+			  		<% for(Designation d1: designationList) {%> 
+			    		<%if(d1.getDesig_name().equals(e.getDesignation())){ %>
+							<option selected><%=d1.getDesig_name()%></option>
+						<% }else{ %>
+						<option><%=d1.getDesig_name()%></option>
+					<% } %>
+					<%} %>
+			    </select><br/>
+				<select name="dep">
+			   		<% for(Department d: departmentList) {%>
+			   			<%if(d.getDept_name().equals(e.getDepartment())){ %>
+							 <option selected><%=d.getDept_name()%></option>	
+						<% }else{ %>
+							<option><%=d.getDept_name()%></option>	
+					<%} %>
+				<%} %>
+			 </select><br/>
+	<%} %>
+<%} %>
 </div>
 <input type="submit" name="Submit">
 </form>
