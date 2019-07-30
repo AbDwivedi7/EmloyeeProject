@@ -23,7 +23,7 @@ public class ViewEmployee extends HttpServlet{
 		//PrintWriter out = response.getWriter();
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/DemoProject","root","@123abhi");
 			PreparedStatement ps = con.prepareStatement("select * from employee");
 		

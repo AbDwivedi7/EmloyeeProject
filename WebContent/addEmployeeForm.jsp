@@ -103,7 +103,8 @@ float:right;
 	<%for(Employee e : employeeList) { %> 
 						<form method="post" action="updateEmployee">
 									<input type="hidden" name="id" value=<%=e.getId()%> />
-							 	   <input type="text" name="name" value=<%=e.getName() %> /><br/>
+							 	   <input type="text" name="name" value="<%=e.getName() %>" /><br/>
+							 	 
 								   <input type="text" name="salary" value=<%=e.getSalary() %> /><br/>
 								   <input type="date" name="jdate" value=<%=e.getHiredate() %> /> <br/>
 								   
