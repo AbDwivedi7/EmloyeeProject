@@ -43,8 +43,7 @@ public class UpdateEmployee extends HttpServlet{
 			ps.executeUpdate();
 			
 			RequestDispatcher rs=request.getRequestDispatcher("viewEmployee");          
-		    rs.forward(request, response);  
-			
+		    rs.forward(request, response);  	
 		}
 		catch(Exception e) {
 			e.printStackTrace();

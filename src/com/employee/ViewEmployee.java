@@ -22,17 +22,13 @@ public class ViewEmployee extends HttpServlet{
 		response.setContentType("text/html");
 		//PrintWriter out = response.getWriter();
 		
-		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/DemoProject","root","@123abhi");
 			PreparedStatement ps = con.prepareStatement("select * from employee");
-			
-			
-			
+		
 			ResultSet rs = ps.executeQuery();
 			request.setAttribute("resultset",rs);
-			
 			
 			ArrayList<Employee> list = new ArrayList<Employee>();
 			
@@ -56,16 +52,6 @@ public class ViewEmployee extends HttpServlet{
 			}
 			
 			request.setAttribute("data", list);
-			
-			
-			/*out.print("hello");
-			out.print("<table>");
-			out.print("<tr>"+"<th>"+"  Id  "+"</th>"+"<th>"+"Name"+"</th>"+"<th>"+"Department"+"</th>"+"<th>"+"Code"+"</th>"+"<th>"+"Salary"+"</th>"+"<th>"+"Designation"+"</th>"+"<th>"+"Hiredate"+"</th>"+"</tr>");
-			while(rs.next()) { 
-			out.print("<tr>"+"<td>"+rs.getString(1)+"</td>"+"<td>"+rs.getString(2)+"</td>"+"<td>"+rs.getString(3)+"</td>"+"<td>"+rs.getString(4)+"</td>"+"<td>"+rs.getString(5)+"</td>"+"<td>"+rs.getString(6)+"</td>"+"<td>"+rs.getString(7)+"</td>"+"<tr>");
-			}
-			out.print("</table>");*/
-			//out.print(list.get(1).getName());
 			
 			RequestDispatcher rs1=request.getRequestDispatcher("view.jsp");          
 			rs1.forward(request, response);  

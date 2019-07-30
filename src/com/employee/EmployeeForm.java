@@ -17,15 +17,6 @@ public class EmployeeForm extends HttpServlet {
 
 	final static long serialVersionUID = 1L;
 	
-	
-	
-	/*public void doGet(HttpServletResponse response, HttpServletRequest request) throws IOException, ServletException{
-		   
-        response.setContentType("text/html"); 
-		
-		RequestDispatcher dis=request.getRequestDispatcher("/addEmployeeForm.jsp");          
-	    dis.forward(request, response); 
-	}*/
 	public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		
 		//PrintWriter out  = response.getWriter();
@@ -50,11 +41,9 @@ public class EmployeeForm extends HttpServlet {
 					departmentDAO.setId(id);
 					String name = rs1.getString("dept_name");
 					departmentDAO.setDept_name(name);
-					list1.add(departmentDAO);
-					
-			}
-			
-			
+					list1.add(departmentDAO);		
+				}
+				
 			ArrayList<Designation> list2 = new ArrayList<Designation>();
 			while(rs2.next()) {
 				Designation designationDAO = new Designation();
@@ -97,8 +86,6 @@ public class EmployeeForm extends HttpServlet {
 				employeeDao.setHiredate(jdate);
 				employeeList.add(employeeDao);
 				
-				
-				
 				request.setAttribute("data1", list1);
 				request.setAttribute("data2", list2);
 				request.setAttribute("data3", employeeList);
@@ -107,13 +94,10 @@ public class EmployeeForm extends HttpServlet {
 			    rs.forward(request, response);  
 				
 			}
-			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 	    
 }

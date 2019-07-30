@@ -51,6 +51,4 @@ public class Employee {
 	public void setHiredate(String hiredate) {
 		this.hiredate = hiredate;
 	}
-	
-	
 }

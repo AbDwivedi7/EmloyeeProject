@@ -16,6 +16,4 @@ public class Designation {
 	public void setDesig_name(String desig_name) {
 		this.desig_name = desig_name;
 	}
-	
-	
 }
