@@ -1,7 +1,6 @@
 package com.employee;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -29,7 +28,7 @@ public class EmployeeForm extends HttpServlet {
 	}*/
 	public void doPost( HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		
-		PrintWriter out  = response.getWriter();
+		//PrintWriter out  = response.getWriter();
 		//out.print("hello");
 		
 		String id1 = request.getParameter("userId");
@@ -70,6 +69,13 @@ public class EmployeeForm extends HttpServlet {
 			if(id1 == null) {
 				request.setAttribute("data1", list1);
 				request.setAttribute("data2", list2);
+				ArrayList<Employee> employeeList = new ArrayList<Employee>();
+				Employee employeeDao = new Employee();
+				String id2 = "0";
+				employeeDao.setId(id2);
+				employeeList.add(employeeDao);
+				
+				request.setAttribute("data3", employeeList);
 				RequestDispatcher rs=request.getRequestDispatcher("addEmployeeForm.jsp");          
 			    rs.forward(request, response);  
 			}
@@ -91,9 +97,7 @@ public class EmployeeForm extends HttpServlet {
 				employeeDao.setHiredate(jdate);
 				employeeList.add(employeeDao);
 				
-				for(Employee e:employeeList) {
-					System.out.println(e.getName());
-				}
+				
 				
 				request.setAttribute("data1", list1);
 				request.setAttribute("data2", list2);

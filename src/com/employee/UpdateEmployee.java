@@ -1,7 +1,6 @@
 package com.employee;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,18 +18,18 @@ public class UpdateEmployee extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		//PrintWriter out = response.getWriter();
 		
 		String id = request.getParameter("id");
-		int id1 = Integer.parseInt(id);
+		//int id1 = Integer.parseInt(id);
 		String name = request.getParameter("name");
-		String dep = request.getParameter("dept");
+		String dep = request.getParameter("dep");
 		String salary = request.getParameter("salary");
 		String jdate = request.getParameter("jdate");
-		String designation = request.getParameter("desig");
+		String designation = request.getParameter("designation");
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/DemoProject","root","@123abhi");
 			PreparedStatement ps = con.prepareStatement("update employee set emp_name=?, emp_dept=?, emp_sal=?, emp_desig=?, emp_hiredate=? where emp_id=?");
 			
@@ -39,7 +38,7 @@ public class UpdateEmployee extends HttpServlet{
 			ps.setString(3, salary);
 			ps.setString(4, designation);
 			ps.setString(5, jdate);
-			ps.setInt(6, id1);
+			ps.setString(6, id);
 			
 			ps.executeUpdate();
 			

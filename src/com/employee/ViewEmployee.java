@@ -1,7 +1,6 @@
 package com.employee;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -21,7 +20,7 @@ public class ViewEmployee extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		//PrintWriter out = response.getWriter();
 		
 		
 		try {

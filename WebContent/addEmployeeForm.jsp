@@ -61,7 +61,7 @@ float:right;
 </style>
 <body>
 <div id="outer">
-<form action="addEmployee" method="post">
+
 
 <div id="names">
 <div id="inner">Name: </div>       
@@ -75,11 +75,12 @@ float:right;
 <% ArrayList<Designation> designationList =  (ArrayList<Designation>)request.getAttribute("data2"); %>
  <% ArrayList<Department> departmentList =  (ArrayList<Department>)request.getAttribute("data1"); %>
  <% ArrayList<Employee> employeeList = (ArrayList<Employee>)request.getAttribute("data3"); %>
- 
-<%for(Employee e : employeeList) { %> 
-<% System.out.println(e.getId()); %>>
-	<%if(e.getId() == null) {%>
-			   
+<%try{ %>
+
+
+
+	<%if(employeeList.get(0).getId().equals("0")) {%>
+			   <form action="addEmployee" method="post">
 			   <input type="text" name="name"/><br/>
 			   <input type="text" name="salary"/><br/>
 			   <input type="date" name="jdate"/><br/>
@@ -94,36 +95,45 @@ float:right;
 							<option><%=d.getDept_name()%></option>	
 					
 					<%} %>
+					
 			  	</select><br/>
-	
+			  	<input type="submit" name="Submit">
+				<form/>
 	<% }else{ %>
-		 	   <input type="text" name="name" value=<%=e.getName() %>/><br/>
-			   <input type="text" name="salary" value=<%=e.getSalary() %>/><br/>
-			   <input type="date" name="jdate" value=<%=e.getHiredate() %>/><br/>
-			   
-			   <select name="designation">
-			  		<% for(Designation d1: designationList) {%> 
-			    		<%if(d1.getDesig_name().equals(e.getDesignation())){ %>
-							<option selected><%=d1.getDesig_name()%></option>
-						<% }else{ %>
-						<option><%=d1.getDesig_name()%></option>
-					<% } %>
-					<%} %>
-			    </select><br/>
-				<select name="dep">
-			   		<% for(Department d: departmentList) {%>
-			   			<%if(d.getDept_name().equals(e.getDepartment())){ %>
-							 <option selected><%=d.getDept_name()%></option>	
-						<% }else{ %>
-							<option><%=d.getDept_name()%></option>	
-					<%} %>
-				<%} %>
-			 </select><br/>
+	<%for(Employee e : employeeList) { %> 
+						<form method="post" action="updateEmployee">
+									<input type="hidden" name="id" value=<%=e.getId()%> />
+							 	   <input type="text" name="name" value=<%=e.getName() %> /><br/>
+								   <input type="text" name="salary" value=<%=e.getSalary() %> /><br/>
+								   <input type="date" name="jdate" value=<%=e.getHiredate() %> /> <br/>
+								   
+								   <select name="designation">
+								  		<% for(Designation d1: designationList) {%> 
+								    		<%if(d1.getDesig_name().equals(e.getDesignation())){ %>
+												<option selected><%=d1.getDesig_name()%></option>
+											<% }else{ %>
+											<option><%=d1.getDesig_name()%></option>
+										<% } %>
+										<%} %>
+								    </select><br/>
+									<select name="dep">
+								   		<% for(Department d: departmentList) {%>
+								   			<%if(d.getDept_name().equals(e.getDepartment())){ %>
+												 <option selected><%=d.getDept_name()%></option>	
+											<% }else{ %>
+												<option><%=d.getDept_name()%></option>	
+										<%} %>
+									<%} %>
+								 </select><br/>
+								 <input type="submit" name="Submit">
+					    </form>
 	<%} %>
 <%} %>
+<%}catch(Exception el){ %>
+<% el.printStackTrace(); } %>
+
 </div>
-<input type="submit" name="Submit">
-</form>
+
 
 </div>
 </body>
