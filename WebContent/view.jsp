@@ -93,9 +93,9 @@ margin-left: 40%;
 	   			<input type="hidden" name="userId" value=<%=s.getId() %> /> 
 	   			<input type="hidden" name="name" value="<%=s.getName() %>" /> 
 	   			
-	   			<input type="hidden" name="dep" value=<%=s.getDepartment() %> />  
+	   			<input type="hidden" name="dep" value="<%=s.getDepartment() %>" />  
 	   			<input type="hidden" name="salary" value=<%=s.getSalary() %> /> 
-	   			<input type="hidden" name="designation" value=<%=s.getDesignation() %> /> 
+	   			<input type="hidden" name="designation" value="<%=s.getDesignation() %>" /> 
 	   			<input type="hidden" name="hiredate" value=<%=s.getHiredate()%> /> 
 	 			<input type="submit" value="Edit" />
 	 		</form>

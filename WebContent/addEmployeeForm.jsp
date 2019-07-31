@@ -1,7 +1,7 @@
 <%@ page import="com.employee.Department"%> 
 <%@ page import="com.employee.Designation"%> 
 <%@ page import="com.employee.Employee"%> 
-<%@ page import="java.util.ArrayList"%> 
+<%@ page import="java.util.*"%> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ float:left;
 height:20%;
 width:100%;
 font-size:20px;
-margin-top:10px;
+margin-top:12px;
 }
 input{
 margin-top: 8px;
@@ -38,7 +38,7 @@ font-size:15px;
 select{
 margin-top:8px;
 float:right;
-height:25px;
+height:30px;
 width:81.5%;
 }
 
@@ -85,12 +85,13 @@ float:right;
 			   <input type="text" name="salary"/><br/>
 			   <input type="date" name="jdate"/><br/>
 			   
-			   <select name="designation">
+			   <select name="designation" multiple >
+			   		
 			  		<% for(Designation d1: designationList) {%>   
 							<option><%=d1.getDesig_name()%></option>
 					<% } %>
 			   </select><br/>
-			   <select name="dep">
+			   <select name="dep" multiple>
 			   		<% for(Department d: departmentList) {%>
 							<option><%=d.getDept_name()%></option>	
 					
@@ -108,21 +109,43 @@ float:right;
 								   <input type="text" name="salary" value=<%=e.getSalary() %> /><br/>
 								   <input type="date" name="jdate" value=<%=e.getHiredate() %> /> <br/>
 								   
-								   <select name="designation">
-								  		<% for(Designation d1: designationList) {%> 
-								    		<%if(d1.getDesig_name().equals(e.getDesignation())){ %>
-												<option selected><%=d1.getDesig_name()%></option>
-											<% }else{ %>
-											<option><%=d1.getDesig_name()%></option>
+								   <select name="designation" multiple >
+								    <% 
+								    	
+								    	String str = e.getDesignation();
+								  		String[] des = str.split(",");
+								  		Set<String> des_set = new HashSet<String>(); 
+								  		for(String s:des){
+								  			des_set.add(s);
+								  		}
+								  		
+								  		%>
+								  		<% for(int i=0; i<designationList.size();i++) {%> 
+								  			
+										  			<%if(des_set.contains(designationList.get(i).getDesig_name())){ %>
+														<option selected><%=designationList.get(i).getDesig_name()%></option>
+													<% }else{ %>
+															<option><%=designationList.get(i).getDesig_name()%></option>
 										<% } %>
 										<%} %>
 								    </select><br/>
-									<select name="dep">
-								   		<% for(Department d: departmentList) {%>
-								   			<%if(d.getDept_name().equals(e.getDepartment())){ %>
-												 <option selected><%=d.getDept_name()%></option>	
+									<select name="dep" multiple >
+									
+										<% 
+											
+											String str1 = e.getDepartment();
+										
+											String[] dep = str1.split(",");
+											Set<String> dep_set = new HashSet<String>();
+											for(String s1:dep){
+												dep_set.add(s1);
+											}
+										%>
+								   		<% for(int i=0; i<departmentList.size(); i++) {%>
+								   			<%if(dep_set.contains(departmentList.get(i).getDept_name())){ %>
+												 <option selected><%=departmentList.get(i).getDept_name()%></option>	
 											<% }else{ %>
-												<option><%=d.getDept_name()%></option>	
+												<option><%=departmentList.get(i).getDept_name()%></option>	
 										<%} %>
 									<%} %>
 								 </select><br/>

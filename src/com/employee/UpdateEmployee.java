@@ -23,10 +23,24 @@ public class UpdateEmployee extends HttpServlet{
 		String id = request.getParameter("id");
 		//int id1 = Integer.parseInt(id);
 		String name = request.getParameter("name");
-		String dep = request.getParameter("dep");
+		String[] department = request.getParameterValues("dep");
+		String dep = "";
+		for(int i=0;i<department.length;i++) {
+			dep = dep+department[i];
+			if(i<department.length-1) {
+				dep = dep+",";
+			}
+		}
 		String salary = request.getParameter("salary");
 		String jdate = request.getParameter("jdate");
-		String designation = request.getParameter("designation");
+		String[] desig= request.getParameterValues("designation");
+		String designation = "";
+		for(int i=0;i<desig.length;i++) {
+			designation = designation+desig[i];
+			if(i<desig.length-1){
+				designation = designation+",";
+			}
+		}
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

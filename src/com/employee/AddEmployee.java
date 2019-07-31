@@ -23,10 +23,24 @@ public class AddEmployee extends HttpServlet{
 		PrintWriter out = response.getWriter();
 				
 		String name = request.getParameter("name");
-		String dep = request.getParameter("dep");
+		String[] department = request.getParameterValues("dep");
+		String dep = "";
+		for(int i=0;i<department.length;i++) {
+			dep = dep+department[i];
+			if(i<department.length-1) {
+				dep = dep+",";
+			}
+		}
 		String salary = request.getParameter("salary");
 		String jdate = request.getParameter("jdate");
-		String designation = request.getParameter("designation");
+		String[] desig = request.getParameterValues("designation");
+		String designation = "";
+		for(int i=0;i<desig.length;i++) {
+			designation = designation+desig[i];
+			if(i<desig.length-1){
+				designation = designation+",";
+			}
+		}
 		int emp_code = 100;
 		
 		try {
@@ -38,7 +52,7 @@ public class AddEmployee extends HttpServlet{
 			ps.setString(2, dep);
 			ps.setInt(3, emp_code);
 			ps.setString(4, salary);
-			ps.setString(5, designation);
+			ps.setObject(5, designation);
 			ps.setString(6, jdate);
 			
 			int j = ps.executeUpdate();
