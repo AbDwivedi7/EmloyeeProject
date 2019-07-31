@@ -10,11 +10,13 @@
 #outer{
 padding-top:20px;
 margin-top:50px;
-margin-left:35%;
-margin-right:35%;
-height:230px;
-width:30%;
-
+margin-left:33%;
+margin-right:33%;
+padding:4px 4px 4px 4px;
+height:330px;
+width:34%;
+border:2px solid #42c5f5;
+border-radius:3px;
 }
 form{
 width:100%;
@@ -25,30 +27,39 @@ float:left;
 height:20%;
 width:100%;
 font-size:20px;
-margin-top:12px;
+margin-top:10px;
+margin-bottom:9px;
 }
 input{
 margin-top: 8px;
 float:right;
-height:22px;
+height:27px;
 width:80%;
 border-radius:5px;
 font-size:15px;
+border: 2px solid #42c5f5;
+border-radius: 4px;
 }
 select{
 margin-top:8px;
 float:right;
-height:30px;
+height:40px;
 width:81.5%;
+border: 2px solid #42c5f5;
+border-radius: 4px;
 }
+option{
+font-size:14px;
 
+}
 input[type=submit]{
 margin-left:20%;
 margin-right:20%;
 margin-top:20px;
 height:30px;
-width:60%;
+width:100%;
 font-size:15px;
+background-color:#42c5f5;
 }
 #names{
 width:30%;
@@ -57,6 +68,11 @@ float:left;
 #inputt{
 width:70%;
 float:right;
+
+}
+input[type=file]{
+font-size:18px;
+cursor:pointer;
 }
 </style>
 <body>
@@ -68,7 +84,8 @@ float:right;
 <div id="inner">Salary:   </div>            
 <div id="inner">Joining Date: </div>        
 <div id="inner">Designation: </div>     
-<div id="inner">Department: </div>         
+<div id="inner">Department: </div>  
+<div id="inner">Uplaod Image</div>       
 </div>
 
 <div id="inputt">
@@ -80,7 +97,7 @@ float:right;
 
 
 	<%if(employeeList.get(0).getId().equals("0")) {%>
-			   <form action="addEmployee" method="post">
+			   <form action="addEmployee" method="post" enctype="multipart/form-data">
 			   <input type="text" name="name"/><br/>
 			   <input type="text" name="salary"/><br/>
 			   <input type="date" name="jdate"/><br/>
@@ -98,6 +115,7 @@ float:right;
 					<%} %>
 					
 			  	</select><br/>
+			  	<input type="file" name="picture" accept="image/*" /> 
 			  	<input type="submit" name="Submit">
 				<form/>
 	<% }else{ %>
@@ -149,6 +167,7 @@ float:right;
 										<%} %>
 									<%} %>
 								 </select><br/>
+								 <input type="file" name="picture" accept="image/*" /> 
 								 <input type="submit" name="Submit">
 					    </form>
 	<%} %>
