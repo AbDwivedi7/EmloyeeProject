@@ -46,7 +46,16 @@
   	<url-pattern>/updateEmployee</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>Welcome</servlet-name>
+  	<servlet-class>com.employee.Welcome</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Welcome</servlet-name>
+  	<url-pattern>/index.jsp</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.html</welcome-file>
   </welcome-file-list>
 </web-app>

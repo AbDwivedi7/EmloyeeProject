@@ -39,6 +39,7 @@ height:25px;
 font-size:13px;
 }
 form{
+
 height:40px;
 }
 #add{
@@ -48,12 +49,18 @@ margin-top:20px;
 margin-right:40%;
 margin-left: 40%;
 }
-
+#form-button{
+display:flex;
+flex-direction:row;
+width:100%;
+height:50px;
+}
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+<div id="form-buttom">
 <form action="employeeForm" method="post" >
  
  <input id="add" type="submit" value="Add Employee">
@@ -68,7 +75,7 @@ margin-left: 40%;
  <input type="hidden" name="exportValue" value="2">
  <input id="add" type="submit" value="Export in PDF">
  </form >
-
+</div>
 <div id="scroll">
 <table >
        
