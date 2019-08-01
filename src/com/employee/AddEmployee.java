@@ -1,8 +1,11 @@
 package com.employee;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,7 +29,7 @@ public class AddEmployee extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		PrintWriter writer = response.getWriter();
 				
 		String name = request.getParameter("name");
 		String[] department = request.getParameterValues("dep");
@@ -50,7 +53,33 @@ public class AddEmployee extends HttpServlet{
 		int emp_code = 100;
 		
 		Part filePart = request.getPart("picture");
-		String fileName =  getSubmittedFileName(filePart);
+		//System.out.println(filePart);
+		String fileName = getFileName(filePart);
+		String path = "/Users/abdwivedi/Desktop/Employee";
+		
+		OutputStream out = null;
+		InputStream fileContent = null;
+		try {
+			out = new FileOutputStream(new File(path+File.separator+fileName));
+			fileContent = filePart.getInputStream();
+			int read = 0;
+			byte[] bytes = new byte[1024*1024];
+			while ((read = fileContent.read(bytes)) != -1) {
+	            out.write(bytes, 0, read);
+	        }
+			writer.println("New file " + fileName + " created at " + path);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			if(out != null) {
+				out.close();
+			}
+			if(fileContent !=  null) {
+				fileContent.close();
+			}
+		}
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -67,7 +96,7 @@ public class AddEmployee extends HttpServlet{
 			
 			int j = ps.executeUpdate();
 			if(j>0) {
-				out.print("Registered successfully");
+				writer.print("Registered successfully");
 			}
 			RequestDispatcher rs=request.getRequestDispatcher("viewEmployee");          
 		    rs.forward(request, response);  
@@ -81,14 +110,14 @@ public class AddEmployee extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
 	}
-	
-	private static String getSubmittedFileName(Part part) {
-	    for (String cd : part.getHeader("content-disposition").split(";")) {
-	        if (cd.trim().startsWith("filename")) {
-	            String fileName = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
-	            return fileName.substring(fileName.lastIndexOf('/') + 1).substring(fileName.lastIndexOf('\\') + 1); // MSIE fix.
+	private String getFileName(Part part) {
+	    for (String content : part.getHeader("content-disposition").split(";")) {
+	        if (content.trim().startsWith("filename")) {
+	            return content.substring(
+	                    content.indexOf('=') + 1).trim().replace("\"", "");
 	        }
 	    }
 	    return null;
 	}
+	
 }
