@@ -55,10 +55,18 @@ margin-left: 40%;
 </head>
 <body>
 <form action="employeeForm" method="post" >
+ 
  <input id="add" type="submit" value="Add Employee">
  </form >
+ 
  <form action="exportEmployee" method="post" >
+ <input type="hidden" name="exportValue"value="1">
  <input id="add" type="submit" value="Export in Excel">
+ </form >
+ 
+ <form action="exportEmployee" method="post" >
+ <input type="hidden" name="exportValue" value="2">
+ <input id="add" type="submit" value="Export in PDF">
  </form >
 
 <div id="scroll">
