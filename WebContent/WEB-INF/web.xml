@@ -29,6 +29,15 @@
   </servlet-mapping>
   
   <servlet>
+  	<servlet-name>ExportEmployeeToExcel</servlet-name>
+  	<servlet-class>com.employee.ExportEmployee</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ExportEmployeeToExcel</servlet-name>
+  	<url-pattern>/exportEmployee</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
   	<servlet-name>UpdateEmployee</servlet-name>
   	<servlet-class>com.employee.UpdateEmployee</servlet-class>
   </servlet>
