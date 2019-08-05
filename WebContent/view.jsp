@@ -8,8 +8,9 @@
 
 <style>
 img{
-height:30px;
-width:30px;
+height:100px;
+width:70px;
+margin-left:25px;
 }
 #scroll{
 margin-top:30px;
@@ -24,9 +25,9 @@ table, td, th{
 table{
 border-collapse: collapse;
 
-width: 70%;
-margin-left:15%;
-margin-right:15%;
+width: 80%;
+margin-left:10%;
+margin-right:10%;
 
 }
 th {
