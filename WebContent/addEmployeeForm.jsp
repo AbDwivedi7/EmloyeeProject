@@ -120,9 +120,9 @@ cursor:pointer;
 				<form/>
 	<% }else{ %>
 	<%for(Employee e : employeeList) { %> 
-						<form method="post" action="updateEmployee">
-									<input type="hidden" name="id" value=<%=e.getId()%> />
-							 	   <input type="text" name="name" value="<%=e.getName() %>" /><br/>
+						<form action="updateEmployee" method="post"  enctype="multipart/form-data" >
+									<input type="hidden" name="id" id="id" value=<%=e.getId()%> />
+							 	   <input type="text" name="name" id="name" value="<%=e.getName() %>" /><br/>
 							 	 
 								   <input type="text" name="salary" value=<%=e.getSalary() %> /><br/>
 								   <input type="date" name="jdate" value=<%=e.getHiredate() %> /> <br/>

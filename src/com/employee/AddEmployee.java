@@ -67,7 +67,6 @@ public class AddEmployee extends HttpServlet{
 			while ((read = fileContent.read(bytes)) != -1) {
 	            out.write(bytes, 0, read);
 	        }
-			writer.println("New file " + fileName + " created at " + path);
 		}
 		catch(Exception e) {
 			e.printStackTrace();

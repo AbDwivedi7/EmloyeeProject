@@ -48,6 +48,8 @@ public class ViewEmployee extends HttpServlet{
 				 employeeDAO.setDesignation(desig);
 				 String date = rs.getString("emp_hiredate");
 				 employeeDAO.setHiredate(date);;
+				 String fileName = rs.getString("emp_pic");
+				 employeeDAO.setFileName(fileName);
 				 list.add(employeeDAO);	
 			}
 			

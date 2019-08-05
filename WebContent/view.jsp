@@ -7,6 +7,10 @@
 <head>
 
 <style>
+img{
+height:30px;
+width:30px;
+}
 #scroll{
 margin-top:30px;
 width:100%;
@@ -88,6 +92,7 @@ height:50px;
    		<th>Salary</th>
    		<th>Designation</th>
    		<th>Joining Date</th>
+   		<th>Image</th>
    		<th>Edit</th>
 </tr>
 
@@ -106,6 +111,7 @@ height:50px;
    		<td><%=s.getSalary() %></td>
    		<td><%=s.getDesignation() %></td>
    		<td><%=s.getHiredate() %></td>
+   		<td><img alt="image" src="/EmployeeProjectImg/abhishek.jpeg" ></td>
 	   	<td>	<form action="employeeForm" method="post">
 	   
 	   			<input type="hidden" name="userId" value=<%=s.getId() %> /> 

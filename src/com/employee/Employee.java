@@ -9,6 +9,7 @@ public class Employee {
 	private String salary;
 	private String designation;
 	private String hiredate;
+	private String fileName;
 	public String getId() {
 		return id;
 	}
@@ -50,5 +51,11 @@ public class Employee {
 	}
 	public void setHiredate(String hiredate) {
 		this.hiredate = hiredate;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 }
